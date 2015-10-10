@@ -2,24 +2,29 @@
 
 <div class="row">
   <aside class="col-md-4">
-  	<section class="user_info">
-		<h1>
-			<%= gravatar_for @user %></br></br></br></br></br>
-			Name: <%= @user.name %>
-    </br></br>
-      Age:
-     </br></br>
-     Occupation:
-     </br></br>
-     About Me:
-     </br></br>
-     Contact:
 
-		</h1>
-	</section>
+    <section class="user_info">
+		  <h1>
+			<%= gravatar_for @user %></br></br></br></br></br>
+			<%= @user.name %><hr>
+    ABOUT ME:<hr>
+    
+    FAMILY BACKGROUND:<hr>
+
+    LIFE GOALS: <hr>
+    
+     CONTACT INFORMATION:<hr>
+
+		  </h1>
+	  </section>
+
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
   
   <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
@@ -28,5 +33,6 @@
       <%= will_paginate @microposts %>
     <% end %>
   </div>
+
 </div>
 
